@@ -2,6 +2,6 @@ class EventImportWorker
   include Sidekiq::Worker
 
   def perform(event)
-    puts event['title']
+    STDERR.puts "Working: #{event['title']}"
   end
 end
