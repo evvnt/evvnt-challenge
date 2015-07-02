@@ -5,6 +5,8 @@ gem 'rails', '3.2.19'
 gem 'pg'
 gem 'httparty'
 gem 'figaro'
+gem 'sidekiq'
+gem 'sinatra', require: nil
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

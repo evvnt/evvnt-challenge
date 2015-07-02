@@ -1,3 +1,12 @@
+## Running locally
+* `foreman s -f Procfile.dev` in development.
+* `bundle exec rake events:import` Will run the import script once.
+
+## Running in production
+* Setup a cronjob on the server to run this rake. Depending on the API limits and server performance, it might be wise running this once a day.
+
+================
+
 ## Instructions for coding test
 
 The following repository is an empty Rails 3.2.19 application with Rspec.
