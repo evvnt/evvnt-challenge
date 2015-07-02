@@ -5,7 +5,7 @@ namespace :events do
     require 'evvnt_service'
 
     # Get last event in the database
-    last_updated_event = Event.recent.first.last_updated
+    last_updated_event = Event.recent.first_or_initialize.last_updated
 
     # Connect to & store Evvnt API
     evvnt_api = EvvntService.new(ENV['API_USERNAME'], ENV['API_PASSWORD'])

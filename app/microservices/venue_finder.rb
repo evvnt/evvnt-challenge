@@ -1,6 +1,6 @@
 class VenueFinder
-  def initialize(venue)
-    @venue = venue
+  def initialize(hash)
+    @hash = hash
   end
 
   def find_or_create
@@ -9,28 +9,28 @@ class VenueFinder
 
   private
 
-  attr_accessor :venue
+  attr_accessor :hash
 
   def find_by_remote_id
-    venue = Venue.find_by_remote_id(venue['id'])
-    update venue
+    venue = Venue.find_by_remote_id(hash['id'])
+    update(venue)
     venue
   end
 
   def update(venue)
     if venue
       venue.update_attributes(
-        name: venue['name'],
-        keywords: venue['keywords']
+        name: hash['name'],
+        keywords: hash['keywords']
       )
     end
   end
 
   def create_from_hash
-    Event.create(
-      name: venue['name'],
-      keywords: venue['keywords'],
-      remote_id: venue['id']
+    Venue.create(
+      name: hash['name'],
+      keywords: hash['keywords'],
+      remote_id: hash['id']
     )
   end
 end
