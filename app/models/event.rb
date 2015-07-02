@@ -3,6 +3,11 @@ class Event < ActiveRecord::Base
 
   scope :recent, order('events.last_updated DESC').limit(1)
 
+  validates :title, :start_time, :remote_id, presence: true
+  validates :remote_id, uniqueness: true
+
+  belongs_to :venue
+
   def last_updated
     super || DateTime.now.utc - 20.days
   end
