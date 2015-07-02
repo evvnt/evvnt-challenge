@@ -5,6 +5,7 @@ gem 'rails', '3.2.19'
 gem 'pg'
 gem 'httparty'
 gem 'figaro'
+gem 'foreman'
 gem 'sidekiq'
 gem 'sinatra', require: nil
 
