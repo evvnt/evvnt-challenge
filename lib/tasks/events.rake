@@ -6,7 +6,6 @@ namespace :events do
 
     # Get last event in the database
     last_updated_event = Event.recent.first.last_updated
-    puts "Last Event Updated: #{last_updated_event}"
 
     # Connect to & store Evvnt API
     evvnt_api = EvvntService.new(ENV['API_USERNAME'], ENV['API_PASSWORD'])
