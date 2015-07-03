@@ -1,5 +1,5 @@
 class Event < ActiveRecord::Base
-  attr_accessible :end_time, :keywords, :remote_id, :start_time, :summary, :title, :last_updated
+  attr_accessible :end_time, :keywords, :remote_id, :start_time, :summary, :title, :last_updated, :venue
 
   scope :recent, order('last_updated DESC').limit(1)
 
@@ -9,6 +9,6 @@ class Event < ActiveRecord::Base
   belongs_to :venue
 
   def last_updated
-    super || DateTime.now.utc - 20.days
+    super || (DateTime.now - 7.months).iso8601
   end
 end

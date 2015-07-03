@@ -17,12 +17,6 @@ class EventFinder
     event
   end
 
-  def create_from_hash
-    create_event.tap do |event|
-      event.venue = VenueFinder.new(hash['venue']).find_or_create
-    end
-  end
-
   def update(event)
     if event
       event.update_attributes(
@@ -36,7 +30,7 @@ class EventFinder
     end
   end
 
-  def create_event
+  def create_from_hash
     Event.create(
       title: hash['title'],
       summary: hash['summary'],
@@ -44,7 +38,8 @@ class EventFinder
       end_time: hash['end_time'],
       keywords: hash['keywords'],
       last_updated: hash['timestamp'],
-      remote_id: hash['id']
+      remote_id: hash['id'],
+      venue: VenueFinder.new(hash['venue']).find_or_create
     )
   end
 end
