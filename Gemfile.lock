@@ -187,6 +187,7 @@ DEPENDENCIES
   rails-assets-momentjs!
   rails-assets-ng-tags-input!
   rails_12factor
+  redis
   rspec-rails
   sass-rails (~> 3.2.3)
   sidekiq
