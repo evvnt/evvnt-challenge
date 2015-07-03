@@ -9,6 +9,7 @@
 //= require app.routes
 
 //= require common/event.model
+//= require common/venue.model
 
 //= require events/events.module
 //= require events/events.routes

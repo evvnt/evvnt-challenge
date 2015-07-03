@@ -6,12 +6,13 @@
     .controller('EventListController', EventListController)
   ;
 
-  EventListController.$inject = ['Event'];
-  function EventListController (Event) {
+  EventListController.$inject = ['Event', 'Venue'];
+  function EventListController (Event, Venue) {
     var vm = this;
     vm.events = [];
     vm.page = 1;
     vm.more = false;
+    vm.autocompleteTags = [];
 
     vm.loadEvents = function () {
       Event.query({

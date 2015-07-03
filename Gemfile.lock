@@ -15,6 +15,8 @@ GEM
       rack-cache (~> 1.2)
       rack-test (~> 0.6.1)
       sprockets (~> 2.2.1)
+    active_model_serializers (0.9.3)
+      activemodel (>= 3.2)
     activemodel (3.2.19)
       activesupport (= 3.2.19)
       builder (~> 3.0.0)
@@ -92,6 +94,11 @@ GEM
     rails-assets-bootstrap (3.3.5)
       rails-assets-jquery (>= 1.9.1)
     rails-assets-jquery (2.1.4)
+    rails_12factor (0.0.3)
+      rails_serve_static_assets
+      rails_stdout_logging
+    rails_serve_static_assets (0.0.4)
+    rails_stdout_logging (0.0.3)
     railties (3.2.19)
       actionpack (= 3.2.19)
       activesupport (= 3.2.19)
@@ -158,6 +165,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_model_serializers
   bundler (>= 1.8.4)
   coffee-rails (~> 3.2.1)
   figaro
@@ -170,6 +178,7 @@ DEPENDENCIES
   rails-assets-angular-resource!
   rails-assets-angular-ui-router!
   rails-assets-bootstrap!
+  rails_12factor
   rspec-rails
   sass-rails (~> 3.2.3)
   sidekiq
