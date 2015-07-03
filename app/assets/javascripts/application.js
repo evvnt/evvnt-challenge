@@ -3,6 +3,9 @@
 //= require angular
 //= require angular-resource
 //= require angular-ui-router
+//= require momentjs
+//= require angular-bootstrap-datetimepicker
+//= require ng-tags-input
 
 //= require app.module
 //= require app.config

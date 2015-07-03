@@ -10,7 +10,6 @@ gem 'foreman'
 gem 'sidekiq'
 gem 'sinatra', require: nil
 gem 'will_paginate', '~> 3.0.6'
-gem 'active_model_serializers'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -26,6 +25,9 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-angular'
   gem 'rails-assets-angular-resource'
   gem 'rails-assets-angular-ui-router'
+  gem 'rails-assets-momentjs'
+  gem 'rails-assets-angular-bootstrap-datetimepicker'
+  gem 'rails-assets-ng-tags-input'
 end
 
 group :production do

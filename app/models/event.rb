@@ -8,7 +8,7 @@ class Event < ActiveRecord::Base
 
   belongs_to :venue
 
-  self.per_page = 5
+  self.per_page = 20
 
   def last_updated
     super || (DateTime.now - 7.months).iso8601

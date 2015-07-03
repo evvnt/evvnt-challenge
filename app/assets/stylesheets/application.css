@@ -1,4 +1,6 @@
 /*
  *= require_self
  *= require bootstrap
+ *= require angular-bootstrap-datetimepicker
+ *= require ng-tags-input
  */

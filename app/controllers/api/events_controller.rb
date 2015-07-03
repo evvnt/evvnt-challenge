@@ -1,10 +1,6 @@
 class API::EventsController < ApplicationController
   def index
-    @events = Event.scoped.paginate(page: params[:page])
-    render json: @events
-  end
-
-  def search
-    # Search
+    @event_search_service = EventSearchService.new(params[:venue_ids], params[:page])
+    render json: @event_search_service.json_results
   end
 end
