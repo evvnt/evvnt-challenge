@@ -37,7 +37,8 @@ namespace :events do
     end
 
     # Cycle through found events if any to play with
-    unless @events_to_import.length.blank?
+    # @events_to_import.nil? && @events_to_import.length > 0
+    if !@events_to_import.nil? && @events_to_import.length > 0
       @events_to_import.each do |event|
         # Add to worker to add or update
         EventImportWorker.perform_async(event)
