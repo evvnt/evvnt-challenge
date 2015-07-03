@@ -1,5 +1,6 @@
 GEM
   remote: https://rubygems.org/
+  remote: https://rails-assets.org/
   specs:
     actionmailer (3.2.19)
       actionpack (= 3.2.19)
@@ -83,6 +84,14 @@ GEM
       activesupport (= 3.2.19)
       bundler (~> 1.0)
       railties (= 3.2.19)
+    rails-assets-angular (1.4.1)
+    rails-assets-angular-resource (1.4.1)
+      rails-assets-angular (= 1.4.1)
+    rails-assets-angular-ui-router (0.2.15)
+      rails-assets-angular (>= 1.0.8)
+    rails-assets-bootstrap (3.3.5)
+      rails-assets-jquery (>= 1.9.1)
+    rails-assets-jquery (2.1.4)
     railties (3.2.19)
       actionpack (= 3.2.19)
       activesupport (= 3.2.19)
@@ -143,11 +152,13 @@ GEM
     uglifier (2.5.3)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    will_paginate (3.0.7)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  bundler (>= 1.8.4)
   coffee-rails (~> 3.2.1)
   figaro
   foreman
@@ -155,11 +166,16 @@ DEPENDENCIES
   jquery-rails
   pg
   rails (= 3.2.19)
+  rails-assets-angular!
+  rails-assets-angular-resource!
+  rails-assets-angular-ui-router!
+  rails-assets-bootstrap!
   rspec-rails
   sass-rails (~> 3.2.3)
   sidekiq
   sinatra
   uglifier (>= 1.0.3)
+  will_paginate (~> 3.0.6)
 
 BUNDLED WITH
    1.10.5
