@@ -7,7 +7,6 @@ class EventSearchService
     @start_time = start_time
     @end_time = end_time
     @page = page.blank? ? 1 : page
-
     @total_entries = 0
     get_events
   end
@@ -15,10 +14,11 @@ class EventSearchService
   def get_events
     query = Event.scoped
     query = query.joins(:venue)
+    query = query.upcoming if @start_time.blank?
     query = query.where('events.keywords like ? or events.title like ?', "%#{@keywords}%", "%#{@keywords}%") if !@keywords.blank?
     query = query.where(venue_id: @venue_ids) if @venue_ids && @venue_ids.length > 0
-    query = query.where('events.start_time >= ?', parsed_date_time(@start_time)) if !@start_time.blank?
-    query = query.where('events.end_time <= ?', parsed_date_time(@end_time)) if !@end_time.blank?
+    query = query.where('events.start_time >= ?', self.formatted_start_time) if !@start_time.blank?
+    query = query.where('events.end_time <= ?', self.formatted_end_time) if !@end_time.blank?
     @results = query.paginate(page: @page)
     @total_entries = @results.total_entries
   end
@@ -39,9 +39,13 @@ class EventSearchService
     }.to_json
   end
 
-  private
+  protected
 
-  def parsed_date_time(date_time)
-    DateTime.parse(date_time).iso8601
+  def formatted_start_time
+    DateTime.parse(@start_time).iso8601
+  end
+
+  def formatted_end_time
+    DateTime.parse(@end_time).iso8601
   end
 end
