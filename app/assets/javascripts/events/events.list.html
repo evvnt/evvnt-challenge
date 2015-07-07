@@ -18,7 +18,8 @@
 
       <div class="form-group">
         <div class="dropdown">
-          <a class="dropdown-toggle btn btn-info btn-block" id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="">
+          <a class="dropdown-toggle btn btn-block" id="dLabel" role="button" data-toggle="dropdown" data-target="#" href=""
+              ng-class="{'btn-success' : events.searchData.start_time, 'btn-default' : !events.searchData.start_time}">
               {{events.searchData.start_time ? 'Selected: ' + (events.searchData.start_time | date:'yyyy-MM-dd HH:mm') : 'Select Start Date/Time'}}
           </a>
           <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
@@ -31,8 +32,9 @@
 
       <div class="form-group">
         <div class="dropdown">
-          <a class="dropdown-toggle btn btn-info btn-block" id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="">
-              {{events.searchData.end_time ? 'Selected End: ' + (events.searchData.end_time | date:'yyyy-MM-dd HH:mm') : 'Select End Date/Time'}}
+          <a class="dropdown-toggle btn btn-block" id="dLabel" role="button" data-toggle="dropdown" data-target="#" href=""
+              ng-class="{'btn-success' : events.searchData.end_time, 'btn-default' : !events.searchData.end_time}">
+              {{events.searchData.end_time ? 'Selected: ' + (events.searchData.end_time | date:'yyyy-MM-dd HH:mm') : 'Select End Date/Time'}}
           </a>
           <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
               <datetimepicker data-on-set-time="events.submitSearchForm()"
@@ -43,7 +45,10 @@
       </div>
 
       <hr>
-      <button type="submit" name="searchButton" ng-disabled="searchForm.$pristine" class="btn btn-success btn-block btn-lg">Search</button>
+      <button type="submit" name="searchButton"
+              ng-disabled="searchForm.$pristine"
+              ng-class="{'btn-default': searchForm.$pristine, 'btn-success': !searchForm.$pristine}"
+              class="btn btn-sm">Search</button>
     </form>
   </div>
 
