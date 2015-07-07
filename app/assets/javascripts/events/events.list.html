@@ -3,7 +3,17 @@
     <form name="searchForm" ng-submit="events.submitSearchForm()">
       <div class="form-group">
         <label for="keywords"></label>
-        <input type="text" name="keywords" placeholder="Keywords..." ng-model="events.searchData.keywords" ng-blur="events.submitSearchForm()" class="form-control input-lg">
+        <input type="text"
+                name="keywords"
+                placeholder="Keywords or title..."
+                ng-model="events.searchData.keywords"
+                ng-change="events.submitSearchForm()"
+                ng-model-options="{updateOn: 'blur'}"
+                ng-class="{
+                  'has-error': searchForm.keywords.$invalid && !searchForm.keywords.$pristine,
+                  'has-success': searchForm.keywords.$valid && searchForm.keywords.$pristine
+                }"
+                class="form-control input-lg">
       </div>
 
       <button type="submit" name="searchButton" ng-disabled="searchForm.$pristine" class="btn btn-success">Search</button>
