@@ -20,7 +20,7 @@
         <div class="dropdown">
           <a class="dropdown-toggle btn btn-block" id="dLabel" role="button" data-toggle="dropdown" data-target="#" href=""
               ng-class="{'btn-success' : events.searchData.start_time, 'btn-default' : !events.searchData.start_time}">
-              {{events.searchData.start_time ? 'Selected: ' + (events.searchData.start_time | date:'yyyy-MM-dd HH:mm') : 'Select Start Date/Time'}}
+              {{events.searchData.start_time ? 'Selected starts after: ' + (events.searchData.start_time | date:'yyyy-MM-dd HH:mm') : 'Select Start Date/Time'}}
           </a>
           <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
               <datetimepicker data-on-set-time="events.submitSearchForm()"
@@ -34,7 +34,7 @@
         <div class="dropdown">
           <a class="dropdown-toggle btn btn-block" id="dLabel" role="button" data-toggle="dropdown" data-target="#" href=""
               ng-class="{'btn-success' : events.searchData.end_time, 'btn-default' : !events.searchData.end_time}">
-              {{events.searchData.end_time ? 'Selected: ' + (events.searchData.end_time | date:'yyyy-MM-dd HH:mm') : 'Select End Date/Time'}}
+              {{events.searchData.end_time ? 'Selected ends sefore: ' + (events.searchData.end_time | date:'yyyy-MM-dd HH:mm') : 'Select End Date/Time'}}
           </a>
           <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
               <datetimepicker data-on-set-time="events.submitSearchForm()"
@@ -44,7 +44,28 @@
         </div>
       </div>
 
+      <div class="form-group">
+        <label>Search by Venue</label>
+        <tags-input ng-model="events.venues"
+                    placeholder="Select venue"
+                    display-property="name"
+                    key-property="id"
+                    on-tag-added="events.venueTagAdded($tag)"
+                    on-tag-removed="events.venueTagRemoved($tag)"
+                    add-from-autocomplete-only="true">
+          <auto-complete source="events.loadVenues($query)"
+                          min-length="3"
+                          load-on-focus="true"
+                          load-on-empty="true"
+                          max-results-to-show="5">
+          </auto-complete>
+        </tags-input>
+      </div>
+
+      {{events.searchData.venue_id}}
+
       <hr>
+
       <button type="submit" name="searchButton"
               ng-disabled="searchForm.$pristine"
               ng-class="{'btn-default': searchForm.$pristine, 'btn-success': !searchForm.$pristine}"
@@ -53,6 +74,8 @@
   </div>
 
   <div class="col-md-8">
+    <p class="text-muted" ng-if="events.resultsCount && !searchForm.$pristine">There are {{events.resultsCount}} events matching your criteria.</p>
+
     <div class="panel" ng-repeat='event in events.events'>
       <h2>{{event.title}} <small> @ {{event.venue}}</small></h2>
       <span class="label label-info">{{event.start_time | date: 'medium'}}</span>
