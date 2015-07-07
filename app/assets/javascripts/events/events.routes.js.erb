@@ -9,12 +9,18 @@
   EventListRoutes.$inject = ['$stateProvider'];
   function EventListRoutes ($stateProvider) {
     $stateProvider
+
       .state('events', {
-        url: '/',
-        controller: 'EventListController',
-        controllerAs: 'events',
-        templateUrl: "<%= asset_path('events/events.html') %>"
+        url: '',
+        templateUrl: "<%= asset_path('events/events.html') %>",
       })
+
+        .state('events.list', {
+          url: '/',
+          controller: 'EventListController',
+          controllerAs: 'events',
+          templateUrl: "<%= asset_path('events/events.list.html') %>"
+        })
     ;
   }
 })();

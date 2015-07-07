@@ -1,15 +1,5 @@
-<div class="row">
-  <div class="col-md-4">
-  </div>
-
-  <div class="col-md-8">
-    <div class="panel" ng-repeat='event in events.events'>
-      <h2>{{event.title}}</h2>
-      <p class="text-muted">
-        {{event.summary}}
-      </p>
-    </div>
-
-    <button class="btn btn-info btn-lg btn-block" ng-click="events.loadMore()" ng-show="events.hasMoreEvents()">Load More</button>
-  </div>
+<div class="page-header">
+  <h1>Evvntfully</h1>
 </div>
+
+<div ui-view></div>

@@ -2,8 +2,6 @@ EvvntChallenge::Application.routes.draw do
   require 'sidekiq/web'
   mount Sidekiq::Web => '/sidekiq'
 
-  root to: 'application#angular'
-
   namespace :api do
     resources :events, only: [:index] do
       get :search, on: :collection
@@ -13,4 +11,7 @@ EvvntChallenge::Application.routes.draw do
       get :autocomplete, on: :collection
     end
   end
+
+  root to: 'application#angular'
+  # get "/*path" => "application#angular", format: :html
 end
