@@ -1,13 +1,77 @@
 /*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the top of the
- * compiled file, but it's generally better to create a new file per style scope.
- *
- *= require_self
- *= require_tree .
- */
+* This is a manifest file that'll be compiled into application.css, which will include all the files
+* listed below.
+*
+* Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+* or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+*
+* You're free to add application-wide styles to this file and they'll appear at the bottom of the
+* compiled file so the styles you add here take precedence over styles defined in any styles
+* defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+* file per style scope.
+*
+*= require_tree .
+*= require_self
+*/
+
+body {
+	/* REQUIRED TO OVERRIDE JQUERY MOBILE GREY BACKGROUND */
+	background: #ACCD8A !important;
+}
+
+.ui-page {
+	font-family: 'Ubuntu', sans-serif;
+	/* REQUIRED TO OVERRIDE JQUERY MOBILE GREY BACKGROUND */
+	background: #ACCD8A !important;
+}
+
+.header,
+.ui-filterable {
+	text-align: center;
+}
+
+.ui-filterable {
+	margin-left: auto;
+	margin-right: auto;
+	font-weight: bold;
+	max-width: 50%;
+	min-width: 25%;
+}
+
+.header,
+.content {
+	background: #FFFFFF;
+	border-radius: 6px;
+	padding: 1.2em;
+	max-width: 960px;
+	margin-top: 1.2em;
+	margin-bottom: 1.2em;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.content ul {
+	list-style-type: none;
+	padding: 0;
+}
+
+.content ul li ul li {
+	list-style-type: none;
+}
+
+#event_title {
+	font-size: 1.2em;
+}
+
+#event_summary {
+	font-weight: bold;
+	font-style: italic;
+}
+
+#event_description {
+	text-align: justify;
+}
+
+#time {
+	font-weight: bold;
+}
