@@ -1,3 +1,15 @@
+## Running locally
+* `foreman s -f Procfile.dev` in development.
+* `bundle exec rake events:import` Will run the import script once.
+
+## Running in production
+* Setup a cronjob on the server to run this rake. Depending on the API limits and server performance, it might be wise running this once a day.
+
+## Comments
+In a real world example I wouldn't build an app that consumes an API that is part of the same build. I've used [Rails Assets](http://rails-assets.org) to bundle some JS and CSS libraries for speed. If this was for a real client I would use Gulp.js and create a custom build task for handling vendor plugins.
+
+================
+
 ## Instructions for coding test
 
 The following repository is an empty Rails 3.2.19 application with Rspec.

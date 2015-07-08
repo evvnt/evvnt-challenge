@@ -1,0 +1,89 @@
+<div class="row">
+  <div class="col-md-4">
+    <form name="searchForm" ng-submit="events.submitSearchForm()">
+      <div class="form-group">
+        <label for="keywords"></label>
+        <input type="text"
+                name="keywords"
+                placeholder="Keywords or title..."
+                ng-model="events.searchData.keywords"
+                ng-change="events.submitSearchForm()"
+                ng-model-options="{updateOn: 'blur'}"
+                ng-class="{
+                  'has-error': searchForm.keywords.$invalid && !searchForm.keywords.$pristine,
+                  'has-success': searchForm.keywords.$valid && searchForm.keywords.$pristine
+                }"
+                class="form-control input-lg">
+      </div>
+
+      <div class="form-group">
+        <div class="dropdown">
+          <a class="dropdown-toggle btn btn-block" id="dLabel" role="button" data-toggle="dropdown" data-target="#" href=""
+              ng-class="{'btn-success' : events.searchData.start_time, 'btn-default' : !events.searchData.start_time}">
+              {{events.searchData.start_time ? 'Selected starts after: ' + (events.searchData.start_time | date:'yyyy-MM-dd HH:mm') : 'Select Start Date/Time'}}
+          </a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+              <datetimepicker data-on-set-time="events.submitSearchForm()"
+                              data-ng-model="events.searchData.start_time"
+                              data-datetimepicker-config="{ dropdownSelector: '.dropdown-toggle' }"></datetimepicker>
+          </ul>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="dropdown">
+          <a class="dropdown-toggle btn btn-block" id="dLabel" role="button" data-toggle="dropdown" data-target="#" href=""
+              ng-class="{'btn-success' : events.searchData.end_time, 'btn-default' : !events.searchData.end_time}">
+              {{events.searchData.end_time ? 'Selected ends sefore: ' + (events.searchData.end_time | date:'yyyy-MM-dd HH:mm') : 'Select End Date/Time'}}
+          </a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+              <datetimepicker data-on-set-time="events.submitSearchForm()"
+                              data-ng-model="events.searchData.end_time"
+                              data-datetimepicker-config="{ dropdownSelector: '.dropdown-toggle' }"></datetimepicker>
+          </ul>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Search by Venue</label>
+        <tags-input ng-model="events.venues"
+                    placeholder="Select venue"
+                    display-property="name"
+                    key-property="id"
+                    on-tag-added="events.venueTagAdded($tag)"
+                    on-tag-removed="events.venueTagRemoved($tag)"
+                    add-from-autocomplete-only="true">
+          <auto-complete source="events.loadVenues($query)"
+                          min-length="3"
+                          load-on-focus="true"
+                          load-on-empty="true"
+                          max-results-to-show="5">
+          </auto-complete>
+        </tags-input>
+      </div>
+
+      {{events.searchData.venue_id}}
+
+      <hr>
+
+      <button type="submit" name="searchButton"
+              ng-disabled="searchForm.$pristine"
+              ng-class="{'btn-default': searchForm.$pristine, 'btn-success': !searchForm.$pristine}"
+              class="btn btn-sm">Search</button>
+    </form>
+  </div>
+
+  <div class="col-md-8">
+    <p class="text-muted" ng-if="events.resultsCount && !searchForm.$pristine">There are {{events.resultsCount}} events matching your criteria.</p>
+
+    <div class="panel" ng-repeat='event in events.events'>
+      <h2>{{event.title}} <small> @ {{event.venue}}</small></h2>
+      <span class="label label-info">{{event.start_time | date: 'medium'}}</span>
+      <p class="text-muted">
+        {{event.summary}}
+      </p>
+    </div>
+
+    <button class="btn btn-info btn-lg btn-block" ng-click="events.loadMore()" ng-show="events.hasMoreEvents()">Load More</button>
+  </div>
+</div>
