@@ -1,47 +1,6 @@
-## Instructions for coding test
+# evvnt-challenge
+This is my submission for the Junior position.
 
-The following repository is an empty Rails 3.2.19 application with Rspec.
-Please clone the repository, complete the exercise outlined below and provide us
-access to your repository containing the solution.
-Feel free to use any database and any version of Ruby (1.9 or greater).
+Using Ruby on Rails and jQuery, I have managed to create a very basic web app which performs all tasks required by the criteria, except for pagination. Search functionality is acheived by using jQuery Mobile's filter search functionality. Although basic, this app should work well on either a tablet or a desktop/laptop computer. Testing has also been implemented after learning of tools already included within Rails - with this in mind, I created a new app and opted to use Minitest for the sake of keeping the application streamlined.
 
-## The exercise
-
-The following endpoint lists event listings:
-
-**https://api.sandbox.evvnt.com/events**
-
-The endpoint is protected by Basic Auth and requires the following credentials to
-access:
-
-Username: evvntchallenge
-
-Password: c2136849e524d6f43b90ac3d7e98e5dc
-
-
-
-Build a system that periodically collects event listing data from the endpoint above, stores it in
-a local database and provides a user interface to query the data. (This exercise is synonymous with
-a simplified aggregate event listing platform, like Songkick or Eventful). The interface should allow a user to query the event listing data by:
-* Start date (between range)
-* Keyword
-* Venue
-
-All search operations should use AJAX where possible and paginate results.
-
-
-
-We will be observing:
-* The way you architect the overall application
-* The way you model the data
-* Use of clean, expressive, performant code
-
-
-You may add new classes of any description to assist you. Any new classes
-should have accompanying tests.
-
-Make sure all tests are passing by running:
-
-`rake`
-
-**There is no time limit for this test.**
+William Willis Whinn

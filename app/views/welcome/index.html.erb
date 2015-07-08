@@ -1,0 +1,39 @@
+<div data-role="page">
+	<!-- HEADER ============================================================ -->
+	<div class="header">
+		<h2>Evvnt API Application: Ruby on Rails</h2>
+		<p>By William Whinn</p>
+	</div> <!-- /header -->
+
+	<!-- API QUERY RESULTS ================================================= -->
+	<div class="content" id="content">
+		<form class="ui-filterable">
+			<p>Search for an Event:</p>
+			<input id="searchFilter" data-type="search" data-mini="true">
+		</form>
+		<br>
+		<ul data-role="listview" data-filter="true" data-input="#searchFilter">
+			<% @result.each do |event| %>
+				<li>
+					<p id="event_title"><strong><%= event['title'] %></strong></p>
+					<p id="event_summary"><%= event['summary'] %></p>
+					<p id="event_description"><%= event['description'] %></p>
+					<p id="time">Start time: <%= event['start_time'] %></p>
+					<p id="time">End time: <%= event['end_time'] %></p>
+					<ul>
+						<li>
+							<p>
+								<%= event['venue']['name'] %><br>
+								<%= event['venue']['address_1'] %><br>
+								<%= event['venue']['town'] %><br>
+								<%= event['venue']['country'] %><br>
+								<%= event['venue']['postcode'] %><br>
+							</p>
+						</li>
+					</ul>
+				</li>
+			<% end %>
+		</ul>
+		<br>
+	</div> <!-- /content -->
+</div> <!-- /page -->
